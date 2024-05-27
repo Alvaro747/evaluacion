@@ -40,4 +40,23 @@ export class RolModuloService
     rolModulo.rol = rol;
     return await super.save(rolModulo);
   }
+
+  async getModuloByRolId(rolId: number): Promise<RolModulo[]> {
+    const rol = await this.RolRepository.findOne({
+      where: {id: rolId},
+    });
+
+    if (!rol) {
+      throw new Error("Rol not found");
+    }
+
+    const entities = await this.repository.find({
+      where: {
+        rol: {id: rol.id},
+      },
+      relations: ["modulo"],
+    });
+
+    return entities;
+  }
 }

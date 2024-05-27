@@ -42,4 +42,12 @@ export class EstudianteAcudienteService
     estudianteAcudiente.acudiente = acudiente;
     return await super.save(estudianteAcudiente);
   }
+
+  async findByStateTrue(): Promise<EstudianteAcudiente[]> {
+    const option = {state: true};
+    return await this.repository.find({
+      where: option,
+      relations: ["estudiante", "acudiente"],
+    });
+  }
 }

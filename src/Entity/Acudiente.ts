@@ -19,6 +19,4 @@ export class Acudiente extends ABaseEntity {
   @Column({length: 50, nullable: false, name: "parentesco"})
   parentesco!: string;
 
-  @ManyToMany(() => Estudiante, (estudiante) => estudiante.acudientes)
-  estudiantes!: Estudiante[];
 }
