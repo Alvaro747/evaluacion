@@ -1,6 +1,7 @@
-import {Entity, Column, ManyToOne, JoinColumn} from "typeorm";
+import {Entity, Column, ManyToOne, JoinColumn, OneToMany} from "typeorm";
 import {ABaseEntity} from "./ABaseEntity";
 import {Sede} from "./Sede";
+import {Matricula} from "./Matricula";
 
 @Entity("curso")
 export class Curso extends ABaseEntity {
@@ -22,4 +23,7 @@ export class Curso extends ABaseEntity {
 
   @Column({length: 100, nullable: false, name: "dias"})
   dias!: string;
+
+  @OneToMany(() => Matricula, (matricula) => matricula.curso)
+  matriculas!: Matricula[];
 }

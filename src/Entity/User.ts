@@ -1,4 +1,4 @@
-import {Entity, Column, ManyToOne, JoinColumn} from "typeorm";
+import {Entity, Column, JoinColumn, OneToOne} from "typeorm";
 import {ABaseEntity} from "./ABaseEntity";
 import {Person} from "./Person";
 
@@ -10,7 +10,7 @@ export class User extends ABaseEntity {
   @Column({name: "password", length: 250, nullable: false})
   password!: string;
 
-  @ManyToOne(() => Person, {eager: true, nullable: false})
+  @OneToOne(() => Person, {eager: true, nullable: false})
   @JoinColumn({name: "person"})
   person!: Person;
 }

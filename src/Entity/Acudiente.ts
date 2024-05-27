@@ -1,5 +1,6 @@
-import {Entity, Column} from "typeorm";
+import {Entity, Column, ManyToMany} from "typeorm";
 import {ABaseEntity} from "./ABaseEntity";
+import {Estudiante} from "./Estudiante";
 
 @Entity("acudiente")
 export class Acudiente extends ABaseEntity {
@@ -17,4 +18,7 @@ export class Acudiente extends ABaseEntity {
 
   @Column({length: 50, nullable: false, name: "parentesco"})
   parentesco!: string;
+
+  @ManyToMany(() => Estudiante, (estudiante) => estudiante.acudientes)
+  estudiantes!: Estudiante[];
 }
