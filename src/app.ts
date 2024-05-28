@@ -18,8 +18,8 @@ async function main() {
     await appDataSource.initialize();
 
     const expressServer = new ExpressServer({
-      port: env.APP_PORT,
-      host: env.APP_HOST,
+      port: env.APP_PORT || 3000,
+      host: env.APP_HOST || "localhost",
     });
 
     expressServer.start();
