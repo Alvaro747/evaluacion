@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm install; tsc",
+    "build": "tsc",
     "start": "ts-node src/app.ts",
     "start:prod": "node dist/app.js"
   },
