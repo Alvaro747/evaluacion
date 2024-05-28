@@ -40,4 +40,12 @@ export class MatriculaService
     matricula.curso = curso;
     return await super.save(matricula);
   }
+
+  async findByStateTrue(): Promise<Matricula[]> {
+    const option = {state: true};
+    return await this.repository.find({
+      where: option,
+      relations: ["estudiante", "curso"],
+    });
+  }
 }
